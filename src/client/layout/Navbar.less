@@ -1,12 +1,133 @@
-nav.top {
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 8px 12%;
+  position: relative;
+  z-index: 999;
+  height: 120px;
+  width: 100% !important;
 
-  border-bottom: 2px solid #aaa;
+  #logo h2 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #c06451;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  }
 
-  menu {
+  #menu {
     display: flex;
-    gap: 1ch;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    li a {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #1e1e1e;
+      transition: all ease 0.5s;
+    }
+
+    li a:hover {
+      color: #c06451;
+    }
+
+    .active-link {
+      color: #c06451;
+    }
+
+    .btn {
+      button {
+        width: 160px;
+        height: 44px;
+      }
+    }
+  }
+
+  .bars {
+    background-color: #c06451;
+    color: #fff;
+    padding: 10px;
+    display: none;
+
+    i {
+      font-size: 25px;
+    }
+  }
+
+  #close {
+    color: #000;
+    padding: 8px;
+    font-size: 25px;
+    font-weight: 800;
+    border-radius: 50px;
+    color: #c06451;
+    background-color: #fff;
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+  }
+
+  .social-icons {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+      text-align: center;
+
+      h2 {
+        font-size: 1.5rem;
+        color: #1e1e1e;
+        margin-bottom: 10px;
+      }
+
+      .icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+        .icon-container {
+          i {
+            font-size: 1.5rem;
+            color: #1e1e1e;
+            transition: color 0.3s ease;
+          }
+
+          i:hover {
+            color: #c06451;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bars {
+      display: block;
+    }
+
+    #menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #fff;
+      height: 100vh;
+      width: 70%;
+      padding: 30px;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+
+      #close {
+        display: block;
+      }
+    }
+  }
+
+  #menu.open {
+    display: flex;
   }
 }
