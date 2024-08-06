@@ -104,6 +104,36 @@ nav {
     }
   }
 
+  button {
+    height: 45px;
+    width: 150px;
+    color: #fff;
+    border: 5px;
+    background-color: #000000;
+    font-size: 500;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      content: "";
+      top: -5px;
+      left: -38px;
+      width: 5%;
+      height: 130px;
+      background-color: #fff;
+      transform: rotate(30deg);
+      filter: blur(10px);
+      transition: 0.3s;
+    }
+
+    &:hover::after {
+      left: 110%;
+    }
+  }
+
   @media (max-width: 768px) {
     .bars {
       display: block;
