@@ -20,6 +20,15 @@ export default function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
+  const handleNavigation = (target) => {
+    if (location.pathname === "/") {
+      document.querySelector(target).scrollIntoView({ behavior: "smooth" });
+    } else if (location.pathname === "/contact") {
+      navigate("/");
+    }
+    setMenuOpen(false);
+  };
+
   return (
     <nav>
       <div id='logo'>
@@ -28,53 +37,54 @@ export default function Navbar() {
       <ul id='menu' className={menuOpen ? "open" : ""}>
         <i className='ri-close-fill' id='close' onClick={toggleMenu}></i>
         <li>
-          <NavLink
-            to='/mainPage'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
+          <a
+            onClick={() => handleNavigation("#hero-section")}
+            className='nav-link'
           >
             Home
-          </NavLink>
+          </a>
         </li>
-        <li>
-          <NavLink
-            to='/about'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/works'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Works
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/services'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Services
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/email'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Email Me
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/contact'
-            className={({ isActive }) => (isActive ? "active-link" : "")}
-          >
-            Contact
-          </NavLink>
-        </li>
+
+        {location.pathname !== "/contact" && (
+          <>
+            <li>
+              <a
+                onClick={() => handleNavigation("#about-section")}
+                className='nav-link'
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => handleNavigation("#works-section")}
+                className='nav-link'
+              >
+                Works
+              </a>
+            </li>
+            <li>
+              <a
+                onClick={() => handleNavigation("#services-section")}
+                className='nav-link'
+              >
+                Services
+              </a>
+            </li>
+          </>
+        )}
+
+        {location.pathname !== "/contact" && (
+          <li>
+            <NavLink
+              to='/contact'
+              className={({ isActive }) => (isActive ? "active-link" : "")}
+            >
+              Contact
+            </NavLink>
+          </li>
+        )}
+
         {location.pathname === "/contact" && !token && (
           <li>
             <NavLink
@@ -85,31 +95,38 @@ export default function Navbar() {
             </NavLink>
           </li>
         )}
+
         {token && (
           <li>
             <button onClick={handleLogout}>Log Out</button>
           </li>
         )}
-        <div className='btn'>
-          <button id='nav-btn'>ORDER NOW</button>
-        </div>
-        <div className='social-icons'>
-          <h2>Follow Me</h2>
-          <div className='icon'>
-            <div className='icon-container'>
-              <i className='ri-facebook-fill'></i>
-            </div>
-            <div className='icon-container'>
-              <i className='ri-twitter-fill'></i>
-            </div>
-            <div className='icon-container'>
-              <i className='ri-instagram-fill'></i>
-            </div>
-            <div className='icon-container'>
-              <i className='ri-linkedin-fill'></i>
+
+        {location.pathname !== "/contact" && (
+          <div className='btn'>
+            <button id='nav-btn'>ORDER NOW</button>
+          </div>
+        )}
+
+        {location.pathname !== "/contact" && (
+          <div className='social-icons'>
+            <h2>Follow Me</h2>
+            <div className='icon'>
+              <div className='icon-container'>
+                <i className='ri-facebook-fill'></i>
+              </div>
+              <div className='icon-container'>
+                <i className='ri-twitter-fill'></i>
+              </div>
+              <div className='icon-container'>
+                <i className='ri-instagram-fill'></i>
+              </div>
+              <div className='icon-container'>
+                <i className='ri-linkedin-fill'></i>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </ul>
       <div className='bars' onClick={toggleMenu}>
         <i className='ri-bar-chart-horizontal-line'></i>
