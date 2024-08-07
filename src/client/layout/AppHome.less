@@ -1,0 +1,147 @@
+.hidden {
+  display: none;
+}
+
+.hero {
+  width: 100vw;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 12%;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(253, 187, 45, 1) 100%
+  );
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%; /* Adjust the height of the fade-out effect */
+  background: linear-gradient(
+    to bottom,
+    rgba(34, 193, 195, 0) 0%,
+    rgba(34, 193, 195, 1) 100%
+  );
+  pointer-events: none; /* Ensure it doesn’t interfere with interactions */
+  z-index: 1; /* Ensure it stays behind the content */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  z-index: 2; /* Ensure content is above circles */
+}
+
+.columns {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+  justify-content: center; /* Center columns */
+}
+
+.column {
+  flex: 1;
+  max-width: 500px; /* Set max width for columns */
+}
+
+h1 {
+  font-size: 6rem;
+  line-height: 5.5rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #b99e64;
+  font-family: "Kanit", sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+h1:hover {
+  transform: scale(1.05);
+}
+
+h3 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  font-family: "Kanit", sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-family: "Kanit", sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+#hero-btn {
+  background-color: #b99e64;
+  color: #ffffff;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#hero-btn:hover {
+  background-color: #967945;
+  transform: scale(1.05);
+}
+
+.circle-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none; /* Ensure circles do not block mouse events */
+  z-index: 0; /* Ensure it stays behind content */
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: float 6s ease-in-out infinite;
+  transition: transform 0.1s ease-in-out;
+}
+
+.c1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: 10%;
+}
+
+.c2 {
+  width: 300px;
+  height: 300px;
+  bottom: 15%;
+  right: 15%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
