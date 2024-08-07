@@ -1,35 +1,49 @@
+html {
+  scroll-behavior: smooth;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 12%;
-  position: relative;
+  padding: 4rem;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 999;
   height: 120px;
-  width: 100% !important;
+  width: 100%;
+  background: transparent;
 
-  #logo h2 {
-    font-size: 2.3rem;
-    font-weight: 700;
-    color: #c06451;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  #logo {
+    flex: 1;
+
+    h2 {
+      font-size: 2.3rem;
+      font-weight: 700;
+      color: #c06451;
+      font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    }
   }
 
   #menu {
+    flex: 2;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 30px;
 
-    li a {
+    li a,
+    li .nav-link {
       font-size: 1.3rem;
       font-weight: 600;
       color: #1e1e1e;
       transition: all ease 0.5s;
     }
 
-    li a:hover {
+    li a:hover,
+    li .nav-link:hover {
       color: #c06451;
     }
 
@@ -151,13 +165,31 @@ nav {
       padding: 30px;
       box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 
+      li a,
+      li .nav-link {
+        font-size: 0.8rem;
+      }
+
       #close {
         display: block;
       }
     }
+
+    #menu.open {
+      display: flex;
+    }
   }
 
-  #menu.open {
-    display: flex;
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #menu li a,
+    #menu li .nav-link {
+      font-size: 1rem; // Adjusted font size for mid-size screens
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .bars {
+      display: none;
+    }
   }
 }
